@@ -67,28 +67,15 @@
             <div class="container content" >
                 <ul class="playlist col xs-12 sm-12 md-8 lg-8 xl-8" ng-to-bottom="loadAudio()">
 
+                    <audio src="" ng-player></audio>
+
                     <!--<li class="search-container">
                         <form >
                             <input class="search-field" type="text" placeholder="&#128269; Поиск">
                         </form>
                     </li>-->
 
-                    <li class="song-container" ng-repeat="track in tracks">
-                        <div class="play-button" onclick="">
-                            <img class="icon" src="assets/play_glyph.svg" alt="Play">
-                        </div>
-                        <div class="info-wrapper">
-                            <div class="title" ng-bind="track.title"></div>
-                            <div class="artist" ng-bind="track.artist"></div>
-                        </div>
-                        <div class="progress-wrapper">
-                            <div class="cache-progress"></div>
-                            <div class="play-progress"></div>
-                        </div>
-                        <audio preload="none" id="{{ track.aid }}">
-                            <source src="{{ trustURL(track.url) }}" type="audio/mpeg">
-                        </audio>
-                    </li>
+                    <div ng-repeat="track in tracks" ng-track></div>
 
                     <li class="loader" ng-show="audioLoading">
                         <div class="spinner">
@@ -126,6 +113,7 @@
         </div>
 
         <!--<script src="js/jquery.min.js"></script>-->
+        <script src="js/svgeezy.min.js"></script>
         <script src="js/app.js"></script>
 
     </body>
