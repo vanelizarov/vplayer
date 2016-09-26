@@ -65,25 +65,21 @@
             </nav>
 
             <div class="container content" >
+
                 <ul class="playlist col xs-12 sm-12 md-8 lg-8 xl-8" ng-to-bottom="loadAudio()">
-
-                    <audio src="" ng-player></audio>
-
+                    <audio src="" preload="none" ng-player></audio>
                     <!--<li class="search-container">
                         <form >
                             <input class="search-field" type="text" placeholder="&#128269; Поиск">
                         </form>
                     </li>-->
-
                     <div ng-repeat="track in tracks" ng-track></div>
-
                     <li class="loader" ng-show="audioLoading">
                         <div class="spinner">
                             <div class="outer"></div>
                             <div class="inner"></div>
                         </div>
                     </li>
-
                 </ul>
 
                 <div class="side-menu col xs-hidden sm-hidden md-4 lg-4 xl-4 o-md-8 o-lg-8 o-xl-8">
@@ -92,13 +88,13 @@
                     <div class="title">–</div>
                     <div class="artist">-</div>
                     <div class="controls">
-                        <div class="prev-button">
+                        <div class="prev-button" ng-click="prevTrack()">
                             <img class="icon" src="assets/prev_glyph.svg" alt="Prev">
                         </div>
-                        <div class="play-button">
+                        <div class="play-button" ng-click="toggleAudio()">
                             <img class="icon" src="assets/play_glyph.svg" alt="Play">
                         </div>
-                        <div class="next-button">
+                        <div class="next-button" ng-click="nextTrack()">
                             <img class="icon" src="assets/next_glyph.svg" alt="Next">
                         </div>
                     </div>
@@ -109,11 +105,13 @@
                     </div>
 
                 </div>
+
             </div>
         </div>
 
         <!--<script src="js/jquery.min.js"></script>-->
         <script src="js/svgeezy.min.js"></script>
+        <script src="js/slider.js"></script>
         <script src="js/app.js"></script>
 
     </body>
