@@ -239,6 +239,11 @@ app.directive('ngPlayer', function() {
                var playedPercentage = (this.currentTime / this.duration) * 100;
                angular.element(playProgressCont).css('width', playedPercentage + '%');
 
+               if (this.currentTime >= this.duration) {
+                   console.log('ended');
+                   $scope.nextTrack();
+               }
+
            });
 
        }
