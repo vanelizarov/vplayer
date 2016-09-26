@@ -145,7 +145,7 @@ app.controller('PlayerController', function($scope, $rootScope, $sce, $element, 
             $scope.sideMenuElem.querySelector('.artist').innerText = $scope.npTrack.artist;
             $scope.npAid = $scope.npTrack.aid;
             $scope.audioElem.src = $sce.trustAsHtml($scope.npTrack.url);
-            $scope.audioElem.setAttribute('title', npTrack.artist + ' - ' + npTrack.title);
+            $scope.audioElem.setAttribute('title', $scope.npTrack.artist + ' - ' + $scope.npTrack.title);
             $scope.audioElem.play();
             $scope.setArtwork($scope.npTrack.artist + ' ' + $scope.npTrack.title);
 
