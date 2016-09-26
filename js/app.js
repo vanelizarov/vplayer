@@ -240,7 +240,6 @@ app.directive('ngPlayer', function() {
                angular.element(playProgressCont).css('width', playedPercentage + '%');
 
                if (this.currentTime >= this.duration) {
-                   console.log('ended');
                    $scope.nextTrack();
                }
 
