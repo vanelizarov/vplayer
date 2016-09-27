@@ -394,6 +394,8 @@ body {
   top: 0;
   background: #191747;
   z-index: 1000;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
   box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.5); }
   .header .container {
     height: 60px; }
@@ -410,7 +412,8 @@ body {
               align-items: center; }
       .header .container .logo-wrapper .logo-img {
         height: 3rem;
-        width: 3rem; }
+        width: 3rem;
+        min-width: 3rem; }
       .header .container .logo-wrapper .logo-text {
         font-size: 3rem;
         line-height: 3rem;
