@@ -34,7 +34,7 @@ app.controller('AuthController', function($scope, $rootScope) {
 
 });
 
-app.controller('PlayerController', function($scope, $rootScope, $sce, $element, $http) {
+app.controller('PlayerController', function($scope, $rootScope, $sce, $element, $http, $window) {
 
     $scope.api = VK.Api;
 
@@ -206,11 +206,11 @@ app.controller('PlayerController', function($scope, $rootScope, $sce, $element, 
     };
 
     $scope.logout = function() {
-        //$scope.destruct();
         VK.Auth.logout(function() {
             console.log('User logged out.');
             $rootScope.$apply(function() {
                 $rootScope.vkUserAuthorized = false;
+                $window.location.reload(true);
             });
         })
     };
