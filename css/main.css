@@ -548,7 +548,9 @@ body {
       .content .playlist .search-container form .search-field::-webkit-input-placeholder, .content .playlist .search-container form .search-field:-moz-placeholder, .content .playlist .search-container form .search-field::-moz-placeholder, .content .playlist .search-container form .search-field:-ms-input-placeholder {
         text-align: center; }
   .content .playlist .song-container {
-    position: relative; }
+    position: relative;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; }
     .content .playlist .song-container .play-button {
       cursor: pointer;
       width: 60px;
