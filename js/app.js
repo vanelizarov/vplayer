@@ -148,7 +148,7 @@ app.controller('PlayerController', function($scope, $rootScope, $sce, $element, 
             $scope.audioElem.setAttribute('title', $scope.npTrack.artist + ' - ' + $scope.npTrack.title);
             $scope.audioElem.play();
             $scope.setArtwork($scope.npTrack.artist + ' ' + $scope.npTrack.title);
-
+            //471745
         }
     };
 
@@ -195,7 +195,18 @@ app.controller('PlayerController', function($scope, $rootScope, $sce, $element, 
         });
     });
 
+    $scope.destruct = function() {
+        $scope.tracks = [];
+        $scope.audioOffset = 0;
+        $scope.npAid = -1;
+        $scope.npTrack = undefined;
+        $scope.npElem = undefined;
+        $scope.audioElem.src = '';
+
+    };
+
     $scope.logout = function() {
+        //$scope.destruct();
         VK.Auth.logout(function() {
             console.log('User logged out.');
             $rootScope.$apply(function() {

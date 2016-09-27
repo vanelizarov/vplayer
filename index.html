@@ -21,12 +21,15 @@
     <body ng-app="vplayer" ng-controller="AppController">
 
         <div ng-controller="AuthController" ng-hide="vkUserAuthorized">
-            <div class="container content">
-                <div class="jumbo">
-                    <div class="logo col xs-12 sm-12 md-12 lg-12 xl-12">vplayer</div>
+            <div class="login-page">
+                <div class="container">
+                    <div class="logo-wrapper col xs-12 sm-12 md-12 lg-12 xl-12">
+                        <div class="logo-img"></div>
+                        <div class="logo-text">vplayer</div>
+                    </div>
                     <div ng-click="auth()"
-                       class="auth-button col xs-8 o-xs-2 sm-6 o-sm-3 md-4 o-md-4 lg-4 o-lg-4 xl-4 o-xl-4"
-                       role="button">Войти через VK</div>
+                         class="auth-button col xs-8 o-xs-2 sm-6 o-sm-3 md-4 o-md-4 lg-4 o-lg-4 xl-4 o-xl-4"
+                         role="button">Войти через VK</div>
                 </div>
             </div>
         </div>
@@ -42,8 +45,9 @@
 
             <nav class="header">
                 <div class="container">
-                    <a class="col xs-6 sm-6 md-6 lg-6 xl-6 logo header-content" href="#">
-                        vplayer
+                    <a class="col xs-6 sm-6 md-6 lg-6 xl-6 logo-wrapper header-content" href="#">
+                        <div class="logo-img"></div>
+                        <div class="logo-text">vplayer</div>
                     </a>
 
                     <div class="col xs-6 sm-6 md-6 lg-6 xl-6 profile-menu header-content">
