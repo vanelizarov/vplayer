@@ -512,7 +512,7 @@ body {
 
 .content {
   margin-top: 80px;
-  overflow: auto;
+  overflow: hidden;
   -webkit-overflow-scrolling: touch; }
   .content .playlist .loader, .content .playlist .song-container, .content .playlist .search-container {
     height: 60px;
