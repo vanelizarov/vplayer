@@ -424,6 +424,15 @@ body {
         text-align: left;
         padding-bottom: .5rem;
         box-sizing: content-box; }
+      @media (max-width: 543px) {
+        .header .container .logo-wrapper .logo-img {
+          width: 2rem;
+          height: 2rem;
+          min-width: 2rem; }
+        .header .container .logo-wrapper .logo-text {
+          font-size: 2rem;
+          line-height: 2rem;
+          padding-bottom: .4rem; } }
     .header .container .profile-menu {
       height: 60px;
       position: relative; }
@@ -455,9 +464,11 @@ body {
         .header .container .profile-menu .menu-underlay .avatar {
           height: 40px;
           width: 40px;
-          min-height: 40px;
-          min-width: 40px;
           border-radius: 50%; }
+          @media (max-width: 543px) {
+            .header .container .profile-menu .menu-underlay .avatar {
+              width: 2.2rem;
+              height: 2.2rem; } }
       .header .container .profile-menu .menu-content {
         display: none;
         list-style: none;
