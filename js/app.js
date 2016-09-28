@@ -227,6 +227,7 @@ app.directive('ngPlayer', function() {
                var smIcon = $scope.sideMenuElem.querySelector('.play-button .icon');
                npcIcon.src = pauseGlyph;
                smIcon.src = pauseGlyph;
+
            });
 
            $element.bind('pause', function() {

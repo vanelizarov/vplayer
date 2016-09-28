@@ -1,106 +1,110 @@
 var slider = (function() {
-	var container = document.getElementsByClassName('volume-slider')[0];
-	var knob = container.getElementsByClassName('knob')[0];
-	var level = container.getElementsByClassName('level')[0];
+    var container = document.querySelector('.volume-slider');
+    var knob = container.querySelector('.knob');
+    var level = container.querySelector('.level');
 
-	var enabled = true;
-	var volume = 0;
+    var enabled = true;
+    var volume = 0;
 
-	var onchange = function(){};
+    var onchange = function(){};
 
-	var mouseOffset;
+    var mouseOffset;
+    var touchOffset;
 
-	function setValue(val) {
+    function setValue(val) {
 
-		volume = val;
-		knob.style.left = (val * 100) + '%';
-		level.style.width = (val * 100) + '%';
-		onchange(volume);
-	}
+        volume = val;
+        knob.style.left = (val * 100) + '%';
+        level.style.width = (val * 100) + '%';
+        onchange(volume);
+    }
 
-	function getMouseOffset(target, e) {
-		var x = 'ontouchstart' in window ? e.targetTouches[0].clientX : e.clientX;
-		var contWidth = container.clientWidth;
-		return x - ((target.style.left.replace('%', '')) / 100) * contWidth;
-	}
+    function getMouseOffset(target, e) {
+        var x = e.clientX;
+        var contWidth = container.clientWidth;
+        return x - ((target.style.left.replace('%', '')) / 100) * contWidth;
+    }
 
-	function onMouseMove(e) {
-		if (enabled) {
+    function moveKnob(xPos, offset) {
+        var knobWidth = knob.clientWidth;
+        var contWidth = container.clientWidth;
+        var xMove = xPos - offset;
+        if (xMove <= 0) {
+            xMove = 0;
+        }
+        if (xMove >= contWidth - knobWidth) {
+            xMove = contWidth - knobWidth;
+        }
 
-			e = e || window.event;
-			var xPos = 'ontouchstart' in window ? e.targetTouches[0].clientX : e.clientX;
-			var knobWidth = knob.clientWidth;
-			var contWidth = container.clientWidth;
-			var xMove = xPos - mouseOffset;
-			if (xMove <= 0) {
-				xMove = 0;
-			}
-			if (xMove >= contWidth - knobWidth) {
-				xMove = contWidth - knobWidth;
-			}
+        knob.style.cursor = 'move';
+        setValue(xMove / contWidth);
+    }
 
-			knob.style.cursor = 'move';
-			setValue(xMove / contWidth);
+    function onMouseMove(e) {
+        if (enabled) {
+            e = e || window.event;
+            moveKnob(e.clientX, mouseOffset);
+            return false;
+        }
+    }
 
-			return false;
-		}
-	}
+    function onMouseUp() {
+        knob.style.cursor = 'pointer';
+        knob = null;
+        document.onmousemove = null;
+        document.onmouseup = null;
+    }
 
-	function onMouseUp() {
-		knob.style.cursor = 'pointer';
-		knob = null;
-		document.onmousemove = null;
-		document.ontouchmove = null;
-		document.onmouseup = null;
-		document.ontouchend = null;
-	}
+    function onMouseDown(e) {
+        e = e || window.event;
+        if (e.which != 1) {
+            return;
+        }
+        knob = this;
+        mouseOffset = getMouseOffset(this, e);
+        document.onmousemove = onMouseMove;
+        document.onmouseup = onMouseUp;
 
-	function onMouseDown(e) {
-		e = e || window.event;
-		if (e.which != 1) {
-			return;
-		}
-		knob = this;
-		mouseOffset = getMouseOffset(this, e);
-		document.onmousemove = onMouseMove;
-		document.ontouchmove = onMouseMove;
-		document.onmouseup = onMouseUp;
-		document.ontouchend = onMouseUp;
+        return false;
+    }
 
-		return false;
-	}
 
-	knob.onmousedown = onMouseDown;
-	knob.ontouchstart = onMouseDown;
+    knob.onmousedown = onMouseDown;
 
-	return {
-		enable: function() {
-			enabled = true;
-		},
-		disable: function() {
-			enabled = false;
-		},
-		value: function(arg) {
-			if (typeof arg !== 'undefined') {
-				var prev = volume;
-				setValue(arg);
-				return prev;
-			} else {
-				return volume;
-			}
-		},
-		onchange: function(callback) {
-			onchange = callback || function(){};
-		}
-	}
+    knob.addEventListener('touchstart', function(event) {
+        if (event.targetTouches.length == 1) {
+            var touch = event.targetTouches[0];
+            touchOffset = touch.pageX - touch.target.offsetLeft;
+        }
+    }, false);
+
+    knob.addEventListener('touchmove', function(event) {
+        if (event.targetTouches.length == 1) {
+            moveKnob(event.targetTouches[0].pageX, touchOffset);
+        }
+    }, false);
+
+    return {
+        enable: function() {
+            enabled = true;
+        },
+        disable: function() {
+            enabled = false;
+        },
+        value: function(arg) {
+            if (typeof arg !== 'undefined') {
+                var prev = volume;
+                setValue(arg);
+                return prev;
+            } else {
+                return volume;
+            }
+        },
+        onchange: function(callback) {
+            onchange = callback || function(){};
+        }
+    }
 
 })();
 
-// function getVolume(volume) {
-// 	$('.log').text(volume);
-// }
-//
-// slider.onchange(getVolume);
-// var prev = slider.value(60);
-// console.log(prev);
 //# sourceMappingURL=maps/slider.js.map
