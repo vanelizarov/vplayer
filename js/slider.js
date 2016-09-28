@@ -19,7 +19,7 @@ var slider = (function() {
 	}
 
 	function getMouseOffset(target, e) {
-		var x = 'ontouchstart' in window ? e.touches[0].clientX : e.clientX;
+		var x = 'ontouchstart' in window ? e.targetTouches[0].clientX : e.clientX;
 		var contWidth = container.clientWidth;
 		return x - ((target.style.left.replace('%', '')) / 100) * contWidth;
 	}
@@ -28,7 +28,7 @@ var slider = (function() {
 		if (enabled) {
 
 			e = e || window.event;
-			var xPos = 'ontouchstart' in window ? e.touches[0].clientX : e.clientX;
+			var xPos = 'ontouchstart' in window ? e.targetTouches[0].clientX : e.clientX;
 			var knobWidth = knob.clientWidth;
 			var contWidth = container.clientWidth;
 			var xMove = xPos - mouseOffset;

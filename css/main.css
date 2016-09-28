@@ -488,15 +488,21 @@ body {
     margin: 0 auto;
     width: 80px;
     height: 80px; }
+    @media (max-width: 543px) {
+      .login-page .logo-wrapper .logo-img {
+        width: 60px;
+        height: 60px; } }
   .login-page .logo-wrapper .logo-text {
-    margin-bottom: 30px;
+    margin-top: .5rem;
+    margin-bottom: 1.5rem;
     text-align: center;
     font-size: 5rem;
     line-height: 5rem; }
     @media (max-width: 543px) {
       .login-page .logo-wrapper .logo-text {
-        font-size: 4.5rem;
-        line-height: 4.5rem; } }
+        margin-bottom: 1rem;
+        font-size: 3rem;
+        line-height: 3rem; } }
   .login-page .auth-button {
     height: 40px;
     color: #191747;
