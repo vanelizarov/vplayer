@@ -415,12 +415,12 @@ body {
       -webkit-box-align: center;
               align-items: center; }
       .header .container .logo-wrapper .logo-img {
-        height: 3rem;
-        width: 3rem;
-        min-width: 3rem; }
+        height: 2.5rem;
+        width: 2.5rem;
+        min-width: 2.5rem; }
       .header .container .logo-wrapper .logo-text {
-        font-size: 3rem;
-        line-height: 3rem;
+        font-size: 2.5rem;
+        line-height: 2.5rem;
         letter-spacing: -3px;
         text-align: left;
         padding-bottom: .5rem;
